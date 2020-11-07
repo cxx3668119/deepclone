@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var aa = {
+      a: 100,
+      b: [10, 20],
+      c: {
+        d: 'z',
+        e: 'y'
+      }
+    };
+
+    function deepclone(obj) {
+      if (obj == null) return null;
+      if (typeof obj !== "object") return obj;
+      let aa1 = new obj.constructor;
+      for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          aa1[key] = deepclone(obj[key]);
+        }
+      }
+      return aa1;
+    }
+    let obj2 = deepclone(aa);
+    console.log(aa, obj2);
+    console.log(aa === obj2);
+  </script>
+</body>
+
+</html>
